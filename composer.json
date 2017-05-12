@@ -20,8 +20,10 @@
         "arcanedev/support": "~4.0"
     },
     "require-dev": {
-        "phpunit/phpcov":  "~3.0",
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpcov":   "~3.0",
+        "phpunit/phpunit":  "~5.0",
+        "predis/predis":    "^1.1",
+        "illuminate/redis": "~5.0"
     },
     "autoload": {
         "psr-4": {
@@ -41,6 +43,9 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
+    },
+    "suggest": {
+        "illuminate/redis": "This package allows you to persist the settings into a redis server."
     },
     "minimum-stability": "dev",
     "prefer-stable" : true
