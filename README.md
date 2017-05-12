@@ -54,7 +54,7 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 [badge_build]:     https://img.shields.io/travis/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_coverage]:  https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_quality]:   https://img.shields.io/scrutinizer/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
-[badge_insight]:   https://img.shields.io/sensiolabs/i/[:id].svg?style=flat-square
+[badge_insight]:   https://img.shields.io/sensiolabs/i/1ba3f1b4-4475-4db5-8f99-0af6fb6a80be.svg?style=flat-square
 [badge_issues]:    https://img.shields.io/github/issues/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_package]:   https://img.shields.io/badge/package-arcanedev/laravel--settings-blue.svg?style=flat-square
 [badge_release]:   https://img.shields.io/packagist/v/arcanedev/laravel-settings.svg?style=flat-square
@@ -67,4 +67,4 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 [link-packagist]:     https://packagist.org/packages/arcanedev/laravel-settings
 [link-travis]:        https://travis-ci.org/ARCANEDEV/LaravelSettings
 [link-scrutinizer]:   https://scrutinizer-ci.com/g/ARCANEDEV/LaravelSettings/?branch=master
-[link-insight]:       https://insight.sensiolabs.com/projects/[:id]
+[link-insight]:       https://insight.sensiolabs.com/projects/1ba3f1b4-4475-4db5-8f99-0af6fb6a80be
