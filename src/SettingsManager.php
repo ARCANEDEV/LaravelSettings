@@ -24,7 +24,7 @@ class SettingsManager extends Manager implements SettingsManagerContract
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']->get('settings.default', 'json');
+        return $this->config()->get('settings.default', 'json');
     }
 
     /* -----------------------------------------------------------------
@@ -82,7 +82,7 @@ class SettingsManager extends Manager implements SettingsManagerContract
      */
     private function registerDriver($driver, array $configs)
     {
-        $this->extend($driver, function () use ($driver, $configs) {
+        $this->extend($driver, function () use ($configs) {
             return new $configs['driver'](
                 $this->app, Arr::get($configs, 'options', [])
             );

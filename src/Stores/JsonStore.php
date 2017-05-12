@@ -72,7 +72,7 @@ class JsonStore extends AbstractStore
             throw new RuntimeException("Invalid JSON file in [{$this->path}]");
         }
 
-        return $data;
+        return (array) $data;
     }
 
     /**

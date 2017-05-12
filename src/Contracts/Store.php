@@ -16,8 +16,8 @@ interface Store
     /**
      * Get a specific key from the settings data.
      *
-     * @param  string|array  $key
-     * @param  mixed         $default
+     * @param  string  $key
+     * @param  mixed   $default
      *
      * @return mixed
      */

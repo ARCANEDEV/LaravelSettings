@@ -187,12 +187,12 @@ class DatabaseStore extends AbstractStore
         $segments = explode('.', $key);
         array_pop($segments);
 
-        while ($segments) {
+        while ( ! empty($segments)) {
             $segment = implode('.', $segments);
+
             // non-empty array - exit out of the loop
-            if ($this->get($segment)) {
-                break;
-            }
+            if ($this->get($segment)) break;
+
             // remove the empty array and move on to the next segment
             $this->forget($segment);
             array_pop($segments);
