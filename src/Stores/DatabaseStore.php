@@ -220,38 +220,11 @@ class DatabaseStore extends AbstractStore
      */
     protected function write(array $data)
     {
-        $changes = [
-            'inserted' => Arr::dot($data),
-            'updated'  => [],
-            'deleted'  => [],
-        ];
+        $changes = $this->getChanges($data);
 
-        foreach ($this->newQuery()->pluck($this->keyColumn) as $key) {
-            if (Arr::has($changes['inserted'], $key))
-                $changes['updated'][$key] = $changes['inserted'][$key];
-            else
-                $changes['deleted'][] = $key;
-
-            Arr::forget($changes['inserted'], $key);
-        }
-
-        foreach ($changes['updated'] as $key => $value) {
-            $this->newQuery()
-                ->where($this->keyColumn, '=', $key)
-                ->update(array($this->valueColumn => $value));
-        }
-
-        if ($changes['inserted']) {
-            $this->newQuery(true)->insert(
-                $this->prepareInsertData($changes['inserted'])
-            );
-        }
-
-        if ($changes['deleted']) {
-            $this->newQuery()
-                ->whereIn($this->keyColumn, $changes['deleted'])
-                ->delete();
-        }
+        $this->syncUpdated($changes['updated']);
+        $this->syncInserted($changes['inserted']);
+        $this->syncDeleted($changes['deleted']);
     }
 
     /* -----------------------------------------------------------------
@@ -315,5 +288,72 @@ class DatabaseStore extends AbstractStore
     protected function hasQueryConstraint()
     {
         return ! is_null($this->queryConstraint) && is_callable($this->queryConstraint);
+    }
+
+    /**
+     * Get the changed settings data.
+     *
+     * @param  array  $data
+     *
+     * @return array
+     */
+    private function getChanges(array $data)
+    {
+        $changes = [
+            'inserted' => Arr::dot($data),
+            'updated'  => [],
+            'deleted'  => [],
+        ];
+
+        foreach ($this->newQuery()->pluck($this->keyColumn) as $key) {
+            if (Arr::has($changes['inserted'], $key))
+                $changes['updated'][$key] = $changes['inserted'][$key];
+            else
+                $changes['deleted'][] = $key;
+
+            Arr::forget($changes['inserted'], $key);
+        }
+
+        return $changes;
+    }
+
+    /**
+     * Sync the updated records.
+     *
+     * @param  array  $updated
+     */
+    private function syncUpdated(array $updated)
+    {
+        foreach ($updated as $key => $value) {
+            $this->newQuery()
+                 ->where($this->keyColumn, '=', $key)
+                 ->update([$this->valueColumn => $value]);
+        }
+    }
+
+    /**
+     * Sync the inserted records.
+     *
+     * @param  array  $inserted
+     */
+    private function syncInserted(array $inserted)
+    {
+        if ( ! empty($inserted)) {
+            $this->newQuery(true)->insert(
+                $this->prepareInsertData($inserted)
+            );
+        }
+    }
+
+    /**
+     * Sync the deleted records.
+     *
+     * @param  array  $deleted
+     */
+    private function syncDeleted(array $deleted)
+    {
+        if ( ! empty($deleted)) {
+            $this->newQuery()->whereIn($this->keyColumn, $deleted)->delete();
+        }
     }
 }
