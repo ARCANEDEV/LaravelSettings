@@ -25,7 +25,7 @@ return [
             'driver'  => Arcanedev\LaravelSettings\Stores\JsonStore::class,
 
             'options' => [
-                'path'   => storage_path('settings.json'),
+                'path'   => storage_path('app/settings.json'),
             ],
         ],
 
