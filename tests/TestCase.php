@@ -18,12 +18,11 @@ abstract class TestCase extends BaseTestCase
     /**
      * Setup the test environment.
      */
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
 
-        $this->artisan('migrate', ['--database' => 'testbench']);
-        $this->loadMigrationsFrom(__DIR__ . '/fixtures/database/migrations');
+        $this->migrate();
     }
 
     /**
@@ -36,7 +35,6 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Orchestra\Database\ConsoleServiceProvider::class,
             \Arcanedev\LaravelSettings\SettingsServiceProvider::class,
         ];
     }
@@ -83,5 +81,16 @@ abstract class TestCase extends BaseTestCase
     protected function getSettingsManager()
     {
         return $this->app->make(\Arcanedev\LaravelSettings\Contracts\Manager::class);
+    }
+
+    /**
+     * Migrate the migrations.
+     */
+    protected function migrate()
+    {
+        $this->artisan('migrate', [
+            '--database' => 'testbench',
+            '--realpath' => __DIR__.'/fixtures/database/migrations',
+        ]);
     }
 }

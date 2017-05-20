@@ -21,14 +21,14 @@ class SettingsServiceProviderTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
 
         $this->provider = $this->app->getProvider(\Arcanedev\LaravelSettings\SettingsServiceProvider::class);
     }
 
-    protected function tearDown()
+    public function tearDown()
     {
         unset($this->provider);
 

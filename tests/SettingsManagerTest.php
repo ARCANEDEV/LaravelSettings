@@ -21,14 +21,14 @@ class SettingsManagerTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
 
         $this->manager = $this->getSettingsManager();
     }
 
-    protected function tearDown()
+    public function tearDown()
     {
         unset($this->manager);
 
