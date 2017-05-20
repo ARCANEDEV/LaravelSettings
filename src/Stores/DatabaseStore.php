@@ -208,9 +208,9 @@ class DatabaseStore extends AbstractStore
      */
     protected function read()
     {
-        return $this->newQuery()
-            ->pluck($this->valueColumn, $this->keyColumn)
-            ->toArray();
+        $result = $this->newQuery()->pluck($this->valueColumn, $this->keyColumn);
+
+        return is_array($result) ? $result : $result->toArray();
     }
 
     /**
