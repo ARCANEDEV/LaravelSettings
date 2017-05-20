@@ -12,13 +12,14 @@
 
 *By [ARCANEDEV&copy;](http://www.arcanedev.net/)*
 
-This package allows you to persists your settings data.
+This package allows you to store/persists your settings data.
 
 Feel free to check out the [releases](https://github.com/ARCANEDEV/LaravelSettings/releases), [license](LICENSE.md), and [contribution guidelines](CONTRIBUTING.md).
 
 ### Features
 
   * Laravel `5.4` is supported.
+  * Multiple store drivers: `array`, `json`, `database`, `redis`.
   * Easy setup &amp; configuration.
   * Well documented &amp; IDE Friendly.
   * Well tested with maximum code quality.
@@ -33,7 +34,6 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/LaravelSettin
 ## TODO
 
   - [ ] Adding Laravel `5.1 | 5.2 | 5.3` Support.
-  - [ ] Adding Redis store driver.
   - [ ] Complete the documentation.
 
 ## Security

@@ -1,7 +1,21 @@
+# 2. Configuration
+
+## Table of contents
+
+  1. [Installation and Setup](1-Installation-and-Setup.md)
+  2. [Configuration](2-Configuration.md)
+  3. [Usage](3-Usage.md)
+  
+## Settings
+
+### Default:
+
+```php
 <?php
 
-return [
+// config/settings.php
 
+return [
     /* -----------------------------------------------------------------
      |  Default drivers
      | -----------------------------------------------------------------
@@ -10,6 +24,22 @@ return [
 
     'default' => 'json',
 
+    // ...
+];
+```
+
+You can specify here your default store driver that you would to use.
+
+### Drivers:
+
+```php
+<?php
+
+// config/settings.php
+
+return [
+    //...
+    
     /* -----------------------------------------------------------------
      |  Drivers
      | -----------------------------------------------------------------
@@ -53,5 +83,22 @@ return [
             ],
         ],
     ],
-
 ];
+```
+
+This is the list of the supported store drivers. You can expand this list by adding a custom store driver.
+
+The store config is structured like this:
+
+```php
+<?php 
+
+// ...
+'custom' => [
+    'driver'  => App\Stores\CustomStore::class,
+    
+    'options' => [
+        // ...
+    ],
+],
+```
