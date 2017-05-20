@@ -17,7 +17,7 @@
     "license": "MIT",
     "require": {
         "php":               ">=5.6",
-        "arcanedev/support": "~4.0"
+        "arcanedev/support": "~3.0"
     },
     "require-dev": {
         "phpunit/phpcov":   "~3.0",
@@ -37,7 +37,7 @@
         }
     },
     "scripts": {
-        "testbench": "composer require --dev \"orchestra/testbench-browser-kit=~3.0\" \"orchestra/database=~3.0\""
+        "testbench": "composer require --dev \"orchestra/testbench=~3.0\" \"orchestra/database=~3.0\""
     },
     "extra": {
         "branch-alias": {
