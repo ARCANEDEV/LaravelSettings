@@ -13,14 +13,15 @@ matrix:
     - php: nightly
 
 env:
-  - TESTBENCH_VERSION=3.4.*
+  - TESTBENCH_VERSION=3.2.*
+  - TESTBENCH_VERSION=3.3.*
 
 services:
   - redis-server
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer require --prefer-source --no-interaction --dev "orchestra/testbench-browser-kit:${TESTBENCH_VERSION}" "orchestra/database:${TESTBENCH_VERSION}"
+  - travis_retry composer require --prefer-source --no-interaction --dev "orchestra/testbench:${TESTBENCH_VERSION}" "orchestra/database:${TESTBENCH_VERSION}"
 
 script:
   - composer validate

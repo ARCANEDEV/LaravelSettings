@@ -1,7 +1,6 @@
 <?php namespace Arcanedev\LaravelSettings\Stores;
 
-use Illuminate\Redis\RedisManager;
-use Illuminate\Support\Arr;
+use Illuminate\Redis\Database;
 
 /**
  * Class     RedisStore
@@ -19,7 +18,7 @@ class RedisStore extends AbstractStore
     /**
      * The redis manager.
      *
-     * @var  \Illuminate\Redis\RedisManager
+     * @var  \Illuminate\Redis\Database
      */
     protected $manager;
 
@@ -35,7 +34,7 @@ class RedisStore extends AbstractStore
      */
     protected function postOptions(array $options)
     {
-        $this->manager = new RedisManager(Arr::pull($options, 'client', 'predis'), $options);
+        $this->manager = new Database($options);
     }
 
     /* -----------------------------------------------------------------
@@ -50,8 +49,7 @@ class RedisStore extends AbstractStore
      */
     protected function read()
     {
-        $data = $this->manager->connection()
-                              ->command('get', ['settings']);
+        $data = $this->manager->command('get', ['settings']);
 
         return is_string($data) ? json_decode($data, true) : [];
     }
@@ -63,7 +61,6 @@ class RedisStore extends AbstractStore
      */
     protected function write(array $data)
     {
-        $this->manager->connection()
-                      ->command('set', ['settings', json_encode($data)]);
+        $this->manager->command('set', ['settings', json_encode($data)]);
     }
 }

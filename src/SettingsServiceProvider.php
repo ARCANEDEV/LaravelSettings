@@ -23,6 +23,21 @@ class SettingsServiceProvider extends PackageServiceProvider
     protected $package = 'settings';
 
     /* -----------------------------------------------------------------
+     |  Getters & Setters
+     | -----------------------------------------------------------------
+     */
+
+    /**
+     * Get the base path of the package.
+     *
+     * @return string
+     */
+    public function getBasePath()
+    {
+        return dirname(__DIR__);
+    }
+
+    /* -----------------------------------------------------------------
      |  Main Methods
      | -----------------------------------------------------------------
      */
@@ -48,8 +63,6 @@ class SettingsServiceProvider extends PackageServiceProvider
         parent::boot();
 
         $this->publishConfig();
-
-        $this->loadMigrations();
     }
 
     /**
