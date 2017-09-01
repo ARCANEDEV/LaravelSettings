@@ -237,7 +237,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  $insert  bool
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     protected function newQuery($insert = false)
     {

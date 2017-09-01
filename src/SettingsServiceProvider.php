@@ -37,7 +37,6 @@ class SettingsServiceProvider extends PackageServiceProvider
         $this->registerConfig();
 
         $this->registerSettingsManager();
-
     }
 
     /**
