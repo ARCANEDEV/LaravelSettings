@@ -45,7 +45,7 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 - [All Contributors][link-contributors]
 
 [badge_license]:   https://img.shields.io/packagist/l/arcanedev/laravel-settings.svg?style=flat-square
-[badge_laravel]:   https://img.shields.io/badge/Laravel-5.4-orange.svg?style=flat-square
+[badge_laravel]:   https://img.shields.io/badge/Laravel-5.2%20to%205.4-orange.svg?style=flat-square
 [badge_build]:     https://img.shields.io/travis/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_coverage]:  https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_quality]:   https://img.shields.io/scrutinizer/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
