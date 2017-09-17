@@ -43,7 +43,10 @@
         "laravel": {
             "providers": [
                 "Arcanedev\\LaravelSettings\\SettingsServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Theme": "Arcanedev\\Settings\\Facades\\Setting"
+            }
         }
     },
     "suggest": {
