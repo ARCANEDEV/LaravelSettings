@@ -47,6 +47,7 @@ class SettingsServiceProvider extends PackageServiceProvider
         parent::boot();
 
         $this->publishConfig();
+        $this->publishMigrations();
 
         $this->loadMigrations();
     }
