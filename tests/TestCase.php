@@ -23,7 +23,6 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         $this->artisan('migrate', ['--database' => 'testbench']);
-        $this->loadMigrationsFrom(__DIR__ . '/fixtures/database/migrations');
     }
 
     /**
@@ -36,7 +35,6 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Orchestra\Database\ConsoleServiceProvider::class,
             \Arcanedev\LaravelSettings\SettingsServiceProvider::class,
         ];
     }

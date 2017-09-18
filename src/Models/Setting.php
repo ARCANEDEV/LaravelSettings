@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\LaravelSettings\Models;
 
-use Arcanedev\Support\Bases\Model;
+use Arcanedev\Support\Database\Model;
 
 /**
  * Class     Setting

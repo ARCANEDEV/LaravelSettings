@@ -49,7 +49,7 @@ class SettingsServiceProvider extends PackageServiceProvider
         $this->publishConfig();
         $this->publishMigrations();
 
-        $this->loadMigrations();
+        SettingsManager::$runsMigrations ? $this->loadMigrations() : $this->publishMigrations();
     }
 
     /**
@@ -72,7 +72,6 @@ class SettingsServiceProvider extends PackageServiceProvider
 
     /**
      * Register the Settings Manager.
-     *
      */
     private function registerSettingsManager()
     {
