@@ -13,6 +13,18 @@ use Arcanedev\LaravelSettings\Contracts\Manager as SettingsManagerContract;
 class SettingsManager extends Manager implements SettingsManagerContract
 {
     /* -----------------------------------------------------------------
+     |  Properties
+     | -----------------------------------------------------------------
+     */
+
+    /**
+     * Indicates if migrations will be run.
+     *
+     * @var bool
+     */
+    public static $runsMigrations = true;
+
+    /* -----------------------------------------------------------------
      |  Getters & Setters
      | -----------------------------------------------------------------
      */
