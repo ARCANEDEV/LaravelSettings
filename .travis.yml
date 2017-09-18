@@ -11,15 +11,12 @@ matrix:
   allow_failures:
     - php: nightly
 
-env:
-  - TESTBENCH_VERSION=3.5.*
-
 services:
   - redis-server
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer require --prefer-source --no-interaction --dev "orchestra/testbench-browser-kit:${TESTBENCH_VERSION}" "orchestra/database:${TESTBENCH_VERSION}"
+  - travis_retry composer install --prefer-source --no-interaction
 
 script:
   - composer validate
