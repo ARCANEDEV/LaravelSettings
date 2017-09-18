@@ -137,6 +137,8 @@ abstract class AbstractStore implements Store
      */
     public function forget($key)
     {
+        $this->checkLoaded();
+
         $this->unsaved = true;
 
         Arr::forget($this->data, $key);
