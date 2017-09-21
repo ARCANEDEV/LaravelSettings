@@ -1,5 +1,7 @@
 <?php namespace Arcanedev\LaravelSettings\Tests\Stores;
 
+use Arcanedev\LaravelSettings\Stores\DatabaseStore;
+
 /**
  * Class     DatabaseStoreTest
  *
@@ -63,5 +65,28 @@ class DatabaseStoreTest extends AbstractStoreTest
         });
 
         $this->assertSame(['foo' => 'bar'], $store->all());
+    }
+
+    /** @test */
+    public function it_can_forget_bis()
+    {
+        // TODO: Apply this to all the stores ?? This issue is masked by the container = The stores are resolved with singleton pattern
+
+        /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
+        $store = new DatabaseStore($this->app, $options = [
+            'connection' => null,
+            'table'      => 'settings',
+            'model'      => \Arcanedev\LaravelSettings\Models\Setting::class,
+        ]);
+
+        $store->set('foo', 'bar');
+        $store->set('bar', 'qux');
+        $store->save();
+
+        $store = new DatabaseStore($this->app, $options);
+
+        $store->forget('foo')->save();
+
+        $this->assertSame(['bar' => 'qux'], $store->all());
     }
 }
