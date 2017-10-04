@@ -54,6 +54,16 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Resolve application HTTP Kernel implementation.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     */
+    protected function resolveApplicationHttpKernel($app)
+    {
+        $app->singleton(\Illuminate\Contracts\Http\Kernel::class, Stubs\Http\Kernel::class);
+    }
+
+    /**
      * Define environment setup.
      *
      * @param  \Illuminate\Foundation\Application   $app

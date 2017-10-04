@@ -3,6 +3,7 @@
 use Arcanedev\LaravelSettings\Contracts\Store;
 use Arcanedev\LaravelSettings\Stores\DatabaseStore;
 use Arcanedev\LaravelSettings\Tests\TestCase;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class     AbstractStoreTest
@@ -170,6 +171,31 @@ abstract class AbstractStoreTest extends TestCase
         $store->flush();
 
         $this->assertStoreHasData($store, []);
+    }
+
+    /** @test */
+    public function it_can_save_automatically_with_middleware()
+    {
+        Route::middleware('web')->any('/testing-route-with-save-settings-middleware', function () {
+            return 'I know the route uri is long. http://pa1.narvii.com/6522/44d52ea2f090856abea164e7660233c85bbdd9d5_00.gif';
+        });
+
+        foreach (['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] as $method) {
+            $store = $this->createStore();
+
+            $store->set(['foo' => 'bar']);
+
+            $response = $this->call($method, '/testing-route-with-save-settings-middleware');
+            $response->assertSuccessful();
+
+            $store = $this->createStore();
+
+            $this->assertEquals(['foo' => 'bar'], $store->all());
+
+            // Make sure to flush data
+            $store->flush()->save();
+            $this->assertEquals([], $store->all());
+        }
     }
 
     /* -----------------------------------------------------------------
