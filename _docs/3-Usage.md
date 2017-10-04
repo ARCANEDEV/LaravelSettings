@@ -180,7 +180,7 @@ class CustomStore extends AbstractStore
      */
     protected function postOptions(array $options)
     {
-        // Do nothing...
+        //
     }
     
     /**
