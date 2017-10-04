@@ -300,7 +300,7 @@ use Arcanedev\LaravelSettings\Contracts\Manager;
 
 class RandomNameClass
 {
-    /** @var  \Arcanedev\LaravelSettings\Contracts\Manager */
+    /** @var  \Arcanedev\LaravelSettings\Contracts\Store */
     protected $settings;
 
     public function __construct(Manager $manager) 
