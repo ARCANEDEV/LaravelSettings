@@ -48,7 +48,7 @@ class SettingsServiceProvider extends PackageServiceProvider
 
         $this->publishConfig();
 
-        SettingsManager::$runsMigrations ? $this->loadMigrations() : $this->publishMigrations();
+        !SettingsManager::$runsMigrations ? $this->loadMigrations() : $this->publishMigrations();
     }
 
     /**
