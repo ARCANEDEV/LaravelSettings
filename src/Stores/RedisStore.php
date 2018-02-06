@@ -50,8 +50,7 @@ class RedisStore extends AbstractStore
      */
     protected function read()
     {
-        $data = $this->manager->connection()
-                              ->command('get', ['settings']);
+        $data = $this->command('get', ['settings']);
 
         return is_string($data) ? json_decode($data, true) : [];
     }
@@ -63,7 +62,36 @@ class RedisStore extends AbstractStore
      */
     protected function write(array $data)
     {
-        $this->manager->connection()
-                      ->command('set', ['settings', json_encode($data)]);
+        $this->command('set', ['settings', json_encode($data)]);
+    }
+
+    /* -----------------------------------------------------------------
+     |  Other Methods
+     | -----------------------------------------------------------------
+     */
+
+    /**
+     * Get a Redis connection by name.
+     *
+     * @param  string|null  $name
+     *
+     * @return \Illuminate\Redis\Connections\Connection
+     */
+    protected function connection($name = null)
+    {
+        return $this->manager->connection($name);
+    }
+
+    /**
+     * Run a command against the Redis database.
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     *
+     * @return mixed
+     */
+    protected function command($method, array $parameters = [])
+    {
+        return $this->connection()->command($method, $parameters);
     }
 }
