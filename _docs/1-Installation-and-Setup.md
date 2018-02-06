@@ -59,3 +59,5 @@ To publish the config file by running this command:
 ```bash
 php artisan vendor:publish --provider="Arcanedev\LaravelSettings\SettingsServiceProvider"
 ```
+
+> **Note:** If you want to publish the laravel settings' migrations, you need to set the `Arcanedev\LaravelSettings\SettingsManager::$runsMigrations` value to `false` in your `ServiceProvider`.
