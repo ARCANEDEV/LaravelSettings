@@ -46,7 +46,7 @@ class SettingsServiceProviderTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $this->provider);
+            static::assertInstanceOf($expected, $this->provider);
         }
     }
 
@@ -58,6 +58,6 @@ class SettingsServiceProviderTest extends TestCase
             \Arcanedev\LaravelSettings\Contracts\Store::class,
         ];
 
-        $this->assertSame($expected, $this->provider->provides());
+        static::assertSame($expected, $this->provider->provides());
     }
 }

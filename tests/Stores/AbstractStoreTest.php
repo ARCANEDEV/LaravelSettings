@@ -49,7 +49,7 @@ abstract class AbstractStoreTest extends TestCase
     {
         $store = $this->createStore();
 
-        $this->assertEquals([], $store->all());
+        static::assertEquals([], $store->all());
     }
 
     /** @test */
@@ -59,7 +59,7 @@ abstract class AbstractStoreTest extends TestCase
 
         $store->set('foo', 'bar');
 
-        $this->assertStoreHasDataWithKey($store, 'foo', 'bar');
+        static::assertStoreHasDataWithKey($store, 'foo', 'bar');
     }
 
     /** @test */
@@ -69,11 +69,11 @@ abstract class AbstractStoreTest extends TestCase
 
         $store->set('foo.bar', 'baz');
 
-        $this->assertStoreHasData($store, ['foo' => ['bar' => 'baz']]);
+        static::assertStoreHasData($store, ['foo' => ['bar' => 'baz']]);
 
-        $this->assertTrue($store->has('foo'));
-        $this->assertTrue($store->has('foo.bar'));
-        $this->assertFalse($store->has('foo.baz'));
+        static::assertTrue($store->has('foo'));
+        static::assertTrue($store->has('foo.bar'));
+        static::assertFalse($store->has('foo.baz'));
     }
 
     /** @test */
@@ -83,7 +83,7 @@ abstract class AbstractStoreTest extends TestCase
 
         $store->set('foo.bar', 'baz');
 
-        $this->assertStoreHasData($store, ['foo' => ['bar' => 'baz']]);
+        static::assertStoreHasData($store, ['foo' => ['bar' => 'baz']]);
     }
 
     /**
@@ -108,11 +108,11 @@ abstract class AbstractStoreTest extends TestCase
         $store->set('foo', 'bar');
         $store->set('bar', 'baz');
 
-        $this->assertStoreHasData($store, ['foo' => 'bar', 'bar' => 'baz']);
+        static::assertStoreHasData($store, ['foo' => 'bar', 'bar' => 'baz']);
 
         $store->forget('foo');
 
-        $this->assertStoreHasData($store, ['bar' => 'baz']);
+        static::assertStoreHasData($store, ['bar' => 'baz']);
     }
 
     /** @test */
@@ -124,7 +124,7 @@ abstract class AbstractStoreTest extends TestCase
         $store->set('foo.baz', 'bar');
         $store->set('bar.foo', 'baz');
 
-        $this->assertStoreHasData($store, [
+        static::assertStoreHasData($store, [
             'foo' => [
                 'bar' => 'baz',
                 'baz' => 'bar',
@@ -136,7 +136,7 @@ abstract class AbstractStoreTest extends TestCase
 
         $store->forget('foo.bar');
 
-        $this->assertStoreHasData($store, [
+        static::assertStoreHasData($store, [
             'foo' => [
                 'baz' => 'bar',
             ],
@@ -156,7 +156,7 @@ abstract class AbstractStoreTest extends TestCase
 
         if ($store instanceof DatabaseStore) unset($expected['bar']);
 
-        $this->assertStoreHasData($store, $expected);
+        static::assertStoreHasData($store, $expected);
     }
 
     /** @test */
@@ -166,11 +166,11 @@ abstract class AbstractStoreTest extends TestCase
 
         $store->set(['foo' => 'bar']);
 
-        $this->assertStoreHasData($store, ['foo' => 'bar']);
+        static::assertStoreHasData($store, ['foo' => 'bar']);
 
         $store->flush();
 
-        $this->assertStoreHasData($store, []);
+        static::assertStoreHasData($store, []);
     }
 
     /** @test */
@@ -190,11 +190,11 @@ abstract class AbstractStoreTest extends TestCase
 
             $store = $this->createStore();
 
-            $this->assertEquals(['foo' => 'bar'], $store->all());
+            static::assertEquals(['foo' => 'bar'], $store->all());
 
             // Make sure to flush data
             $store->flush()->save();
-            $this->assertEquals([], $store->all());
+            static::assertEquals([], $store->all());
         }
     }
 
@@ -202,6 +202,7 @@ abstract class AbstractStoreTest extends TestCase
      |  Custom Assertions
      | -----------------------------------------------------------------
      */
+
     /**
      * @param  \Arcanedev\LaravelSettings\Contracts\Store  $store
      * @param  mixed                                       $expected
@@ -209,13 +210,13 @@ abstract class AbstractStoreTest extends TestCase
      */
     protected function assertStoreHasData(Store $store, $expected, $message = null)
     {
-        $this->assertEquals($expected, $store->all(), $message);
-        $this->assertFalse($store->isSaved());
+        static::assertEquals($expected, $store->all(), $message);
+        static::assertFalse($store->isSaved());
 
         $store->save();
 
-        $this->assertEquals($expected, $this->createStore()->all(), $message);
-        $this->assertTrue($store->isSaved());
+        static::assertEquals($expected, $this->createStore()->all(), $message);
+        static::assertTrue($store->isSaved());
     }
 
     /**
@@ -226,12 +227,12 @@ abstract class AbstractStoreTest extends TestCase
      */
     protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = null)
     {
-        $this->assertSame($expected, $store->get($key), $message);
-        $this->assertFalse($store->isSaved());
+        static::assertSame($expected, $store->get($key), $message);
+        static::assertFalse($store->isSaved());
 
         $store->save();
 
-        $this->assertSame($expected, $this->createStore()->get($key), $message);
-        $this->assertTrue($store->isSaved());
+        static::assertSame($expected, $this->createStore()->get($key), $message);
+        static::assertTrue($store->isSaved());
     }
 }

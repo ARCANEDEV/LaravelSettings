@@ -49,7 +49,7 @@ class SettingsManagerTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $this->manager);
+            static::assertInstanceOf($expected, $this->manager);
         }
     }
 
@@ -62,14 +62,14 @@ class SettingsManagerTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, settings());
+            static::assertInstanceOf($expected, settings());
         }
     }
 
     /** @test */
     public function it_can_get_default_store_name()
     {
-        $this->assertSame('json', $this->manager->getDefaultDriver());
+        static::assertSame('json', $this->manager->getDefaultDriver());
     }
 
     /** @test */
@@ -83,7 +83,7 @@ class SettingsManagerTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $store);
+            static::assertInstanceOf($expected, $store);
         }
     }
 
@@ -99,8 +99,8 @@ class SettingsManagerTest extends TestCase
         foreach ($expectations as $name => $expected) {
             $store = $this->manager->driver($name);
 
-            $this->assertInstanceOf(\Arcanedev\LaravelSettings\Contracts\Store::class, $store);
-            $this->assertInstanceOf($expected, $store);
+            static::assertInstanceOf(\Arcanedev\LaravelSettings\Contracts\Store::class, $store);
+            static::assertInstanceOf($expected, $store);
         }
     }
 
@@ -116,8 +116,8 @@ class SettingsManagerTest extends TestCase
         foreach ($expectations as $name => $expected) {
             $store = settings($name);
 
-            $this->assertInstanceOf(\Arcanedev\LaravelSettings\Contracts\Store::class, $store);
-            $this->assertInstanceOf($expected, $store);
+            static::assertInstanceOf(\Arcanedev\LaravelSettings\Contracts\Store::class, $store);
+            static::assertInstanceOf($expected, $store);
         }
     }
 }

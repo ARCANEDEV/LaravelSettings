@@ -33,16 +33,16 @@ class DatabaseStoreTest extends AbstractStoreTest
         /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
         $store = $this->createStore();
 
-        $this->assertSame([], $store->all());
+        static::assertSame([], $store->all());
 
         $store->setExtraColumns(['user_id' => 1])->set(['foo' => 'bar'])->save();
         $store->setExtraColumns(['user_id' => 2])->set(['foo' => 'baz'])->save();
 
         $store = $this->createStore();
 
-        $this->assertSame('baz', $store->get('foo'));
-        $this->assertSame('bar', $store->setExtraColumns(['user_id' => 1])->get('foo'));
-        $this->assertSame('baz', $store->setExtraColumns(['user_id' => 2])->get('foo'));
+        static::assertSame('baz', $store->get('foo'));
+        static::assertSame('bar', $store->setExtraColumns(['user_id' => 1])->get('foo'));
+        static::assertSame('baz', $store->setExtraColumns(['user_id' => 2])->get('foo'));
     }
 
     /** @test */
@@ -54,7 +54,7 @@ class DatabaseStoreTest extends AbstractStoreTest
         $store->set('foo', 'bar');
         $store->set('bar', 'baz');
 
-        $this->assertStoreHasData($store, ['foo' => 'bar', 'bar' => 'baz']);
+        static::assertStoreHasData($store, ['foo' => 'bar', 'bar' => 'baz']);
 
         $store = $this->createStore();
 
@@ -64,7 +64,7 @@ class DatabaseStoreTest extends AbstractStoreTest
             }
         });
 
-        $this->assertSame(['foo' => 'bar'], $store->all());
+        static::assertSame(['foo' => 'bar'], $store->all());
     }
 
     /** @test */
@@ -87,6 +87,6 @@ class DatabaseStoreTest extends AbstractStoreTest
 
         $store->forget('foo')->save();
 
-        $this->assertSame(['bar' => 'qux'], $store->all());
+        static::assertSame(['bar' => 'qux'], $store->all());
     }
 }
