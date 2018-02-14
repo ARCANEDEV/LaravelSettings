@@ -39,7 +39,7 @@ class JsonStoreTest extends AbstractStoreTest
      */
     private function getFixtureFilePath()
     {
-        return dirname(__DIR__).'/fixtures/database/json-settings.json';
+        return __DIR__.'/../fixtures/database/json-settings.json';
     }
 
     /**
@@ -52,6 +52,6 @@ class JsonStoreTest extends AbstractStoreTest
         /** @var  \Arcanedev\LaravelSettings\Stores\JsonStore  $store */
         $store = $this->createStore();
 
-        $store->setPath(dirname(__DIR__).'/fixtures/database/invalid-settings.json')->all();
+        $store->setPath(__DIR__.'/../fixtures/database/invalid-settings.json')->all();
     }
 }

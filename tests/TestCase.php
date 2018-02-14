@@ -22,7 +22,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->artisan('migrate', ['--database' => 'testbench']);
+        $this->artisan('migrate', ['--database' => 'testing']);
     }
 
     /**
@@ -70,12 +70,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
-        ]);
+        //
     }
 
     /* -----------------------------------------------------------------
