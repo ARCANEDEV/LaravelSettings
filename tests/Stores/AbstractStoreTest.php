@@ -208,7 +208,7 @@ abstract class AbstractStoreTest extends TestCase
      * @param  mixed                                       $expected
      * @param  string|null                                 $message
      */
-    protected function assertStoreHasData(Store $store, $expected, $message = null)
+    protected function assertStoreHasData(Store $store, $expected, $message = '')
     {
         static::assertEquals($expected, $store->all(), $message);
         static::assertFalse($store->isSaved());
@@ -225,7 +225,7 @@ abstract class AbstractStoreTest extends TestCase
      * @param  mixed                                       $expected
      * @param  string|null                                 $message
      */
-    protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = null)
+    protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = '')
     {
         static::assertSame($expected, $store->get($key), $message);
         static::assertFalse($store->isSaved());

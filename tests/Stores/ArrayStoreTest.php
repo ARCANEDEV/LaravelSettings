@@ -32,14 +32,14 @@ class ArrayStoreTest extends AbstractStoreTest
      | -----------------------------------------------------------------
      */
 
-    protected function assertStoreHasData(Store $store, $expected, $message = null)
+    protected function assertStoreHasData(Store $store, $expected, $message = '')
     {
         static::assertEquals($expected, $store->all(), $message);
 
         $store->save();
     }
 
-    protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = null)
+    protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = '')
     {
         static::assertEquals($expected, $store->get($key), $message);
 
