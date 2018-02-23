@@ -1,4 +1,4 @@
-- LaravelImpersonator Version: #.#.#
+- LaravelSettings Version: #.#.#
 - Laravel Version: #.#.#
 - PHP Version: #.#.#
 
