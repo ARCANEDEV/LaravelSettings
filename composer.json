@@ -24,7 +24,8 @@
         "phpunit/phpunit":     "~7.0",
         "phpunit/phpcov":      "~5.0",
         "predis/predis":       "~1.1",
-        "illuminate/redis":    "~5.7.1"
+        "illuminate/redis":    "~5.7.1",
+        "mockery/mockery": "^1.1"
     },
     "autoload": {
         "psr-4": {
