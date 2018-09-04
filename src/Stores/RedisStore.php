@@ -35,7 +35,9 @@ class RedisStore extends AbstractStore
      */
     protected function postOptions(array $options)
     {
-        $this->manager = new RedisManager(Arr::pull($options, 'client', 'predis'), $options, []);
+        $this->manager = new RedisManager(
+            $this->app, Arr::pull($options, 'client', 'predis'), $options
+        );
     }
 
     /* -----------------------------------------------------------------
