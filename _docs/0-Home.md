@@ -6,7 +6,7 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/LaravelSettin
 
 ### Features
 
-  * Laravel `5.2 | 5.3 | 5.4 | 5.5 | 5.6 | 5.7` are supported.
+  * Laravel `5.2` to `5.7` are supported.
   * Multiple store drivers: `array`, `json`, `database`, `redis`.
   * Easy setup &amp; configuration.
   * Well documented &amp; IDE Friendly.
