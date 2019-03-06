@@ -22,7 +22,7 @@
     "require-dev": {
         "orchestra/testbench": "~3.8",
         "mockery/mockery":     "~1.0",
-        "phpunit/phpunit":     "~7.5",
+        "phpunit/phpunit":     "~7.5|~8.0",
         "phpunit/phpcov":      "~5.0",
         "predis/predis":       "~1.1",
         "illuminate/redis":    "~5.8"
