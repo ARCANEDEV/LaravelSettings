@@ -25,7 +25,7 @@ class RedisStoreTest extends AbstractStoreTest
         return $this->getStore('redis');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->createStore()->flush()->save();
 

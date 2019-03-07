@@ -27,7 +27,7 @@ class JsonStoreTest extends AbstractStoreTest
         return $this->getStore('json')->setPath($path);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unlink($this->getFixtureFilePath());
 

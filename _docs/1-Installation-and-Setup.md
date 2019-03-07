@@ -5,7 +5,7 @@
   1. [Installation and Setup](1-Installation-and-Setup.md)
   2. [Configuration](2-Configuration.md)
   3. [Usage](3-Usage.md)
-  
+
 ## Server Requirements
 
 The LaravelSettings package has a few system requirements:
@@ -21,6 +21,7 @@ The LaravelSettings package has a few system requirements:
 | ![LaravelSettings v2.x][laravel_settings_2_x] | ![Laravel v5.5][laravel_5_5]                              |
 | ![LaravelSettings v3.x][laravel_settings_3_x] | ![Laravel v5.6][laravel_5_6]                              |
 | ![LaravelSettings v4.x][laravel_settings_4_x] | ![Laravel v5.7][laravel_5_7]                              |
+| ![LaravelSettings v5.x][laravel_settings_5_x] | ![Laravel v5.8][laravel_5_8]                              |
 
 [laravel_5_2]:  https://img.shields.io/badge/v5.2-supported-brightgreen.svg?style=flat-square "Laravel v5.2"
 [laravel_5_3]:  https://img.shields.io/badge/v5.3-supported-brightgreen.svg?style=flat-square "Laravel v5.3"
@@ -28,16 +29,18 @@ The LaravelSettings package has a few system requirements:
 [laravel_5_5]:  https://img.shields.io/badge/v5.5-supported-brightgreen.svg?style=flat-square "Laravel v5.5"
 [laravel_5_6]:  https://img.shields.io/badge/v5.6-supported-brightgreen.svg?style=flat-square "Laravel v5.6"
 [laravel_5_7]:  https://img.shields.io/badge/v5.7-supported-brightgreen.svg?style=flat-square "Laravel v5.7"
+[laravel_5_8]:  https://img.shields.io/badge/v5.8-supported-brightgreen.svg?style=flat-square "Laravel v5.8"
 
 [laravel_settings_0_x]: https://img.shields.io/badge/version-0.*-blue.svg?style=flat-square "LaravelSettings v0.*"
 [laravel_settings_1_x]: https://img.shields.io/badge/version-1.*-blue.svg?style=flat-square "LaravelSettings v1.*"
 [laravel_settings_2_x]: https://img.shields.io/badge/version-2.*-blue.svg?style=flat-square "LaravelSettings v2.*"
 [laravel_settings_3_x]: https://img.shields.io/badge/version-3.*-blue.svg?style=flat-square "LaravelSettings v3.*"
 [laravel_settings_4_x]: https://img.shields.io/badge/version-4.*-blue.svg?style=flat-square "LaravelSettings v4.*"
+[laravel_settings_5_x]: https://img.shields.io/badge/version-5.*-blue.svg?style=flat-square "LaravelSettings v5.*"
 
 ## Composer
 
-You can install this package via [Composer](http://getcomposer.org/) by running this command: 
+You can install this package via [Composer](http://getcomposer.org/) by running this command:
 
 ```bash
 composer require arcanedev/laravel-settings
