@@ -1,5 +1,7 @@
 <?php
 
+use Arcanedev\LaravelSettings\Contracts\Manager;
+
 if ( ! function_exists('settings')) {
     /**
      * Get the settings manager instance.
@@ -10,7 +12,7 @@ if ( ! function_exists('settings')) {
      */
     function settings($driver = null) {
         /** @var  \Arcanedev\LaravelSettings\Contracts\Manager  $manager */
-        $manager = app(Arcanedev\LaravelSettings\Contracts\Manager::class);
+        $manager = app(Manager::class);
 
         return $driver ? $manager->driver($driver) : $manager;
     }

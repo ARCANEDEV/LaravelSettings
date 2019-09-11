@@ -35,7 +35,7 @@ class CreateSettingsTable extends Migration
     public function up()
     {
         $this->createSchema(function(Blueprint $table) {
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedBigInteger('user_id')->default(0);
             $table->string('key');
             $table->text('value');
             $table->timestamps();

@@ -86,14 +86,12 @@ abstract class AbstractStoreTest extends TestCase
         static::assertStoreHasData($store, ['foo' => ['bar' => 'baz']]);
     }
 
-    /**
-     * @test
-     *
-     * @expectedException         \UnexpectedValueException
-     * @expectedExceptionMessage  Non-array segment encountered
-     */
+    /** @test */
     public function it_must_throw_an_exception_when_setting_nested_key_on_non_array_member()
     {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionMessage('Non-array segment encountered');
+
         $store = $this->createStore();
 
         $store->set('foo', 'bar');

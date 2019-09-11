@@ -42,13 +42,11 @@ class JsonStoreTest extends AbstractStoreTest
         return __DIR__.'/../fixtures/database/json-settings.json';
     }
 
-    /**
-     * @test
-     *
-     * @expectedException  \RuntimeException
-     */
+    /** @test */
     public function it_must_throw_an_exception_when_file_is_invalid()
     {
+        $this->expectException(\RuntimeException::class);
+
         /** @var  \Arcanedev\LaravelSettings\Stores\JsonStore  $store */
         $store = $this->createStore();
 
