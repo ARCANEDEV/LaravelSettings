@@ -121,9 +121,8 @@ abstract class AbstractStore implements Store
                 Arr::set($this->data, $k, $v);
             }
         }
-        else {
+        else
             Arr::set($this->data, $key, $value);
-        }
 
         return $this;
     }
@@ -222,7 +221,8 @@ abstract class AbstractStore implements Store
      */
     protected function checkLoaded()
     {
-        if ($this->isLoaded()) return;
+        if ($this->isLoaded())
+            return;
 
         $this->data   = $this->read();
         $this->loaded = true;

@@ -1,6 +1,8 @@
 <?php namespace Arcanedev\LaravelSettings;
 
-use Arcanedev\Support\PackageServiceProvider;
+use Arcanedev\LaravelSettings\Contracts\Manager as ManagerContract;
+use Arcanedev\Support\Providers\PackageServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 /**
  * Class     SettingsServiceProvider
@@ -8,7 +10,7 @@ use Arcanedev\Support\PackageServiceProvider;
  * @package  Arcanedev\LaravelSettings
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class SettingsServiceProvider extends PackageServiceProvider
+class SettingsServiceProvider extends PackageServiceProvider implements DeferrableProvider
 {
     /* -----------------------------------------------------------------
      |  Properties
@@ -30,7 +32,7 @@ class SettingsServiceProvider extends PackageServiceProvider
     /**
      * Register the service provider.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 
@@ -42,10 +44,8 @@ class SettingsServiceProvider extends PackageServiceProvider
     /**
      * Boot the service provider.
      */
-    public function boot()
+    public function boot(): void
     {
-        parent::boot();
-
         $this->publishConfig();
 
         SettingsManager::$runsMigrations ? $this->loadMigrations() : $this->publishMigrations();
@@ -56,7 +56,7 @@ class SettingsServiceProvider extends PackageServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [
             Contracts\Manager::class,
@@ -70,19 +70,22 @@ class SettingsServiceProvider extends PackageServiceProvider
      */
 
     /**
-     * Register the Settings Manager.
+     * Register the Settings Manager & Store drivers.
      */
-    private function registerSettingsManager()
+    private function registerSettingsManager(): void
     {
-        $this->singleton(Contracts\Manager::class, function ($app) {
-            return new SettingsManager($app);
-        });
+        $this->singleton(ManagerContract::class, SettingsManager::class);
 
         $this->singleton(Contracts\Store::class, function ($app) {
-            /** @var \Arcanedev\LaravelSettings\Contracts\Manager $manager */
-            $manager = $app[Contracts\Manager::class];
+            return $app[ManagerContract::class]->driver();
+        });
 
-            return $manager->driver();
+        $this->app->extend(ManagerContract::class, function (ManagerContract $manager, $app) {
+            foreach ($app['config']->get('settings.drivers', []) as $driver => $params) {
+                $manager->registerStore($driver, $params);
+            }
+
+            return $manager;
         });
     }
 }
