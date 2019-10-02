@@ -52,4 +52,14 @@ interface Manager
      * @return \Arcanedev\LaravelSettings\Contracts\Manager
      */
     public function extend($driver, Closure $callback);
+
+    /**
+     * Register a new store.
+     *
+     * @param  string  $driver
+     * @param  array   $params
+     *
+     * @return \Arcanedev\LaravelSettings\Contracts\Manager
+     */
+    public function registerStore(string $driver, array $params);
 }

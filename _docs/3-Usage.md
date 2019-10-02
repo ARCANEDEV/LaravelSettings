@@ -50,8 +50,6 @@ class RandomNameClass
 }
 ```
 
-You can also use the `Arcanedev\LaravelSettings\Facades\Settings` façade or whatever.
-
 ```php
 <?php
 

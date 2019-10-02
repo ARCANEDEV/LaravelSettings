@@ -17,15 +17,15 @@
     "license": "MIT",
     "require": {
         "php":               ">=7.2.0",
-        "arcanedev/support": "~5.0.0"
+        "ext-json":          "*",
+        "arcanedev/support": "^5.0"
     },
     "require-dev": {
-        "orchestra/testbench": "~4.0.0",
-        "mockery/mockery":     "~1.2",
-        "phpunit/phpunit":     "~8.0",
-        "phpunit/phpcov":      "~6.0",
-        "predis/predis":       "~1.1",
-        "illuminate/redis":    "~6.0.0"
+        "orchestra/testbench": "^4.0",
+        "mockery/mockery":     "^1.2",
+        "phpunit/phpunit":     "^8.0",
+        "phpunit/phpcov":      "^6.0",
+        "predis/predis":       "^1.1"
     },
     "autoload": {
         "psr-4": {

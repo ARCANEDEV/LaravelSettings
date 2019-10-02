@@ -1,8 +1,7 @@
 <?php namespace Arcanedev\LaravelSettings;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Manager;
 use Arcanedev\LaravelSettings\Contracts\Manager as SettingsManagerContract;
+use Illuminate\Support\{Arr, Manager};
 
 /**
  * Class     SettingsManager
@@ -36,68 +35,23 @@ class SettingsManager extends Manager implements SettingsManagerContract
      */
     public function getDefaultDriver()
     {
-        return $this->config()->get('settings.default', 'json');
-    }
-
-    /* -----------------------------------------------------------------
-     |  Constructor
-     | -----------------------------------------------------------------
-     */
-
-    /**
-     * SettingsManager constructor.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    public function __construct($app)
-    {
-        parent::__construct($app);
-
-        foreach ($this->getConfig('drivers') as $driver => $configs) {
-            $this->registerDriver($driver, $configs);
-        }
-    }
-
-    /* -----------------------------------------------------------------
-     |  Other Methods
-     | -----------------------------------------------------------------
-     */
-
-    /**
-     * Get the config repository.
-     *
-     * @return \Illuminate\Contracts\Config\Repository
-     */
-    private function config()
-    {
-        return $this->app['config'];
+        return $this->container['config']->get('settings.default', 'json');
     }
 
     /**
-     * Get the package configs.
-     *
-     * @param  string      $key
-     * @param  mixed|null  $default
-     *
-     * @return mixed
-     */
-    private function getConfig($key, $default = null)
-    {
-        return $this->config()->get("settings.{$key}", $default);
-    }
-
-    /**
-     * Register the driver.
+     * Register a new store.
      *
      * @param  string  $driver
-     * @param  array   $configs
+     * @param  array   $params
+     *
+     * @return \Arcanedev\LaravelSettings\SettingsManager
      */
-    private function registerDriver($driver, array $configs)
+    public function registerStore(string $driver, array $params)
     {
-        $this->extend($driver, function () use ($configs) {
-            return new $configs['driver'](
-                $this->app, Arr::get($configs, 'options', [])
-            );
+        return $this->extend($driver, function () use ($params) {
+            return $this->container->make($params['driver'], [
+                'options' => Arr::get($params, 'options', []),
+            ]);
         });
     }
 }
