@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Stores;
 
 use Arcanedev\LaravelSettings\Contracts\Store;
 use Arcanedev\LaravelSettings\Utilities\Arr;
@@ -109,7 +113,7 @@ abstract class AbstractStore implements Store
      * @param  string|array  $key
      * @param  mixed         $value
      *
-     * @return self
+     * @return $this
      */
     public function set($key, $value = null)
     {
@@ -132,7 +136,7 @@ abstract class AbstractStore implements Store
      *
      * @param  string  $key
      *
-     * @return self
+     * @return $this
      */
     public function forget($key)
     {
@@ -148,7 +152,7 @@ abstract class AbstractStore implements Store
     /**
      * Flushing all data.
      *
-     * @return self
+     * @return $this
      */
     public function flush()
     {
@@ -173,7 +177,7 @@ abstract class AbstractStore implements Store
     /**
      * Save any changes done to the settings data.
      *
-     * @return self
+     * @return $this
      */
     public function save()
     {
@@ -219,7 +223,7 @@ abstract class AbstractStore implements Store
     /**
      * Check if the settings data has been loaded.
      */
-    protected function checkLoaded()
+    protected function checkLoaded(): void
     {
         if ($this->isLoaded())
             return;
@@ -231,7 +235,7 @@ abstract class AbstractStore implements Store
     /**
      * Reset the loaded status.
      */
-    protected function resetLoaded()
+    protected function resetLoaded(): void
     {
         $this->loaded = false;
     }
@@ -241,7 +245,7 @@ abstract class AbstractStore implements Store
      *
      * @return bool
      */
-    protected function isLoaded()
+    protected function isLoaded(): bool
     {
         return (bool) $this->loaded;
     }

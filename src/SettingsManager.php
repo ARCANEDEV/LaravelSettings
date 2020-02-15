@@ -1,5 +1,10 @@
-<?php namespace Arcanedev\LaravelSettings;
+<?php
 
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings;
+
+use Arcanedev\LaravelSettings\Contracts\Store as StoreContract;
 use Arcanedev\LaravelSettings\Contracts\Manager as SettingsManagerContract;
 use Illuminate\Support\{Arr, Manager};
 
@@ -35,7 +40,7 @@ class SettingsManager extends Manager implements SettingsManagerContract
      */
     public function getDefaultDriver()
     {
-        return $this->container['config']->get('settings.default', 'json');
+        return $this->config->get('settings.default', 'json');
     }
 
     /**
@@ -44,11 +49,11 @@ class SettingsManager extends Manager implements SettingsManagerContract
      * @param  string  $driver
      * @param  array   $params
      *
-     * @return \Arcanedev\LaravelSettings\SettingsManager
+     * @return $this
      */
     public function registerStore(string $driver, array $params)
     {
-        return $this->extend($driver, function () use ($params) {
+        return $this->extend($driver, function () use ($params) : StoreContract {
             return $this->container->make($params['driver'], [
                 'options' => Arr::get($params, 'options', []),
             ]);

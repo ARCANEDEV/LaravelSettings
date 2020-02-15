@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Arcanedev\LaravelSettings\Contracts\Manager;
 
 if ( ! function_exists('settings')) {

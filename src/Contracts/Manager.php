@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Contracts;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Contracts;
 
 use Closure;
 
@@ -49,7 +53,7 @@ interface Manager
      * @param  string    $driver
      * @param  \Closure  $callback
      *
-     * @return \Arcanedev\LaravelSettings\Contracts\Manager
+     * @return $this
      */
     public function extend($driver, Closure $callback);
 
@@ -59,7 +63,7 @@ interface Manager
      * @param  string  $driver
      * @param  array   $params
      *
-     * @return \Arcanedev\LaravelSettings\Contracts\Manager
+     * @return $this
      */
     public function registerStore(string $driver, array $params);
 }

@@ -1,5 +1,13 @@
-<?php namespace Arcanedev\LaravelSettings\Tests;
+<?php
 
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests;
+
+use Arcanedev\LaravelSettings\Contracts\Manager;
+use Arcanedev\LaravelSettings\Middleware\SaveSettings;
+use Arcanedev\LaravelSettings\SettingsServiceProvider;
+use Illuminate\Contracts\Http\Kernel;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 /**
@@ -32,35 +40,11 @@ abstract class TestCase extends BaseTestCase
      *
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            \Arcanedev\LaravelSettings\SettingsServiceProvider::class,
+            SettingsServiceProvider::class,
         ];
-    }
-
-    /**
-     * Get package aliases.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     *
-     * @return array
-     */
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Settings' => \Arcanedev\LaravelSettings\Facades\Settings::class,
-        ];
-    }
-
-    /**
-     * Resolve application HTTP Kernel implementation.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function resolveApplicationHttpKernel($app)
-    {
-        $app->singleton(\Illuminate\Contracts\Http\Kernel::class, Stubs\Http\Kernel::class);
     }
 
     /**
@@ -70,7 +54,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        //
+        $app->make(Kernel::class)->pushMiddleware(SaveSettings::class);
     }
 
     /* -----------------------------------------------------------------
@@ -83,8 +67,8 @@ abstract class TestCase extends BaseTestCase
      *
      * @return \Arcanedev\LaravelSettings\Contracts\Manager
      */
-    protected function getSettingsManager()
+    protected function getSettingsManager(): Manager
     {
-        return $this->app->make(\Arcanedev\LaravelSettings\Contracts\Manager::class);
+        return $this->app->make(Manager::class);
     }
 }

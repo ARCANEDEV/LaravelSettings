@@ -1,6 +1,11 @@
-<?php namespace Arcanedev\LaravelSettings;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings;
 
 use Arcanedev\LaravelSettings\Contracts\Manager as ManagerContract;
+use Arcanedev\LaravelSettings\Contracts\Store as StoreContract;
 use Arcanedev\Support\Providers\PackageServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
@@ -59,8 +64,8 @@ class SettingsServiceProvider extends PackageServiceProvider implements Deferrab
     public function provides(): array
     {
         return [
-            Contracts\Manager::class,
-            Contracts\Store::class,
+            ManagerContract::class,
+            StoreContract::class,
         ];
     }
 
@@ -76,7 +81,7 @@ class SettingsServiceProvider extends PackageServiceProvider implements Deferrab
     {
         $this->singleton(ManagerContract::class, SettingsManager::class);
 
-        $this->singleton(Contracts\Store::class, function ($app) {
+        $this->singleton(StoreContract::class, function ($app): StoreContract {
             return $app[ManagerContract::class]->driver();
         });
 

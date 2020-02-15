@@ -15,6 +15,13 @@ jobs:
 
     name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }}
 
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379/tcp
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
@@ -39,6 +46,8 @@ jobs:
         run: |
           mkdir -p build/logs
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+        env:
+          REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
       - name: Scrutinizer CI
         run: |

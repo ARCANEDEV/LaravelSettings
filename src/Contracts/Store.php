@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Contracts;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Contracts;
 
 /**
  * Interface     Store
@@ -38,7 +42,7 @@ interface Store
      * @param  string|array  $key
      * @param  mixed         $value
      *
-     * @return self
+     * @return $this
      */
     public function set($key, $value = null);
 
@@ -47,14 +51,14 @@ interface Store
      *
      * @param  string  $key
      *
-     * @return self
+     * @return $this
      */
     public function forget($key);
 
     /**
      * Flushing all data.
      *
-     * @return self
+     * @return $this
      */
     public function flush();
 
@@ -68,7 +72,7 @@ interface Store
     /**
      * Save any changes done to the settings data.
      *
-     * @return self
+     * @return $this
      */
     public function save();
 

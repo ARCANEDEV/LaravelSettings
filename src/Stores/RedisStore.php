@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Stores;
 
 use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Arr;
@@ -92,7 +96,7 @@ class RedisStore extends AbstractStore
      *
      * @return mixed
      */
-    protected function command($method, array $parameters = [])
+    protected function command(string $method, array $parameters = [])
     {
         return $this->connection()->command($method, $parameters);
     }

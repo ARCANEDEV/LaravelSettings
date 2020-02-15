@@ -1,9 +1,14 @@
-<?php namespace Arcanedev\LaravelSettings\Tests\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests\Stores;
 
 use Arcanedev\LaravelSettings\Contracts\Store;
 use Arcanedev\LaravelSettings\Stores\DatabaseStore;
 use Arcanedev\LaravelSettings\Tests\TestCase;
 use Illuminate\Support\Facades\Route;
+use UnexpectedValueException;
 
 /**
  * Class     AbstractStoreTest
@@ -45,7 +50,7 @@ abstract class AbstractStoreTest extends TestCase
      */
 
     /** @test */
-    public function it_can_init_with_empty_data()
+    public function it_can_init_with_empty_data(): void
     {
         $store = $this->createStore();
 
@@ -53,7 +58,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_save_the_changes()
+    public function it_can_save_the_changes(): void
     {
         $store = $this->createStore();
 
@@ -63,7 +68,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_data_exists()
+    public function it_can_check_data_exists(): void
     {
         $store = $this->createStore();
 
@@ -77,7 +82,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_with_nested_keys()
+    public function it_can_set_with_nested_keys(): void
     {
         $store = $this->createStore();
 
@@ -87,9 +92,9 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_an_exception_when_setting_nested_key_on_non_array_member()
+    public function it_must_throw_an_exception_when_setting_nested_key_on_non_array_member(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
         $this->expectExceptionMessage('Non-array segment encountered');
 
         $store = $this->createStore();
@@ -99,7 +104,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_forget()
+    public function it_can_forget(): void
     {
         $store = $this->createStore();
 
@@ -114,7 +119,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_forget_nested_key()
+    public function it_can_forget_nested_key(): void
     {
         $store = $this->createStore();
 
@@ -158,7 +163,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_flush_all_data()
+    public function it_can_flush_all_data(): void
     {
         $store = $this->createStore();
 
@@ -172,7 +177,7 @@ abstract class AbstractStoreTest extends TestCase
     }
 
     /** @test */
-    public function it_can_save_automatically_with_middleware()
+    public function it_can_save_automatically_with_middleware(): void
     {
         Route::middleware('web')->any('/testing-route-with-save-settings-middleware', function () {
             return 'I know the route uri is long. http://pa1.narvii.com/6522/44d52ea2f090856abea164e7660233c85bbdd9d5_00.gif';
@@ -223,7 +228,7 @@ abstract class AbstractStoreTest extends TestCase
      * @param  mixed                                       $expected
      * @param  string|null                                 $message
      */
-    protected function assertStoreHasDataWithKey(Store $store, $key, $expected, $message = '')
+    protected function assertStoreHasDataWithKey(Store $store, string $key, $expected, $message = ''): void
     {
         static::assertSame($expected, $store->get($key), $message);
         static::assertFalse($store->isSaved());

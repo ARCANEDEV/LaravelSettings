@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Tests\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests\Stores;
 
 /**
  * Class     JsonStoreTest
@@ -34,16 +38,13 @@ class JsonStoreTest extends AbstractStoreTest
         parent::tearDown();
     }
 
-    /**
-     * @return string
+    /* -----------------------------------------------------------------
+     |  Tests
+     | -----------------------------------------------------------------
      */
-    private function getFixtureFilePath()
-    {
-        return __DIR__.'/../fixtures/database/json-settings.json';
-    }
 
     /** @test */
-    public function it_must_throw_an_exception_when_file_is_invalid()
+    public function it_must_throw_an_exception_when_file_is_invalid(): void
     {
         $this->expectException(\RuntimeException::class);
 
@@ -51,5 +52,18 @@ class JsonStoreTest extends AbstractStoreTest
         $store = $this->createStore();
 
         $store->setPath(__DIR__.'/../fixtures/database/invalid-settings.json')->all();
+    }
+
+    /* -----------------------------------------------------------------
+     |  Other Methods
+     | -----------------------------------------------------------------
+     */
+
+    /**
+     * @return string
+     */
+    private function getFixtureFilePath()
+    {
+        return __DIR__.'/../fixtures/database/json-settings.json';
     }
 }
