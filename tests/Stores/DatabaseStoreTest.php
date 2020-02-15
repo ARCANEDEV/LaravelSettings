@@ -1,5 +1,10 @@
-<?php namespace Arcanedev\LaravelSettings\Tests\Stores;
+<?php
 
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests\Stores;
+
+use Arcanedev\LaravelSettings\Models\Setting;
 use Arcanedev\LaravelSettings\Stores\DatabaseStore;
 
 /**
@@ -27,8 +32,13 @@ class DatabaseStoreTest extends AbstractStoreTest
         return $this->getStore('database');
     }
 
+    /* -----------------------------------------------------------------
+     |  Tests
+     | -----------------------------------------------------------------
+     */
+
     /** @test */
-    public function it_can_set_extra_columns()
+    public function it_can_set_extra_columns(): void
     {
         /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
         $store = $this->createStore();
@@ -46,7 +56,7 @@ class DatabaseStoreTest extends AbstractStoreTest
     }
 
     /** @test */
-    public function it_can_constraint_query()
+    public function it_can_constraint_query(): void
     {
         /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
         $store = $this->createStore();
@@ -68,7 +78,7 @@ class DatabaseStoreTest extends AbstractStoreTest
     }
 
     /** @test */
-    public function it_can_forget_bis()
+    public function it_can_forget_bis(): void
     {
         // TODO: Apply this to all the stores ?? This issue is masked by the container = The stores are resolved with singleton pattern
 
@@ -76,7 +86,7 @@ class DatabaseStoreTest extends AbstractStoreTest
         $store = new DatabaseStore($this->app, $options = [
             'connection' => null,
             'table'      => 'settings',
-            'model'      => \Arcanedev\LaravelSettings\Models\Setting::class,
+            'model'      => Setting::class,
         ]);
 
         $store->set('foo', 'bar');

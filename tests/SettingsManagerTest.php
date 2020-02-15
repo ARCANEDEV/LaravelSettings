@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Tests;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests;
 
 /**
  * Class     SettingsManagerTest
@@ -41,7 +45,7 @@ class SettingsManagerTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         $expectations = [
             \Arcanedev\LaravelSettings\Contracts\Manager::class,
@@ -54,7 +58,7 @@ class SettingsManagerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_instantiated_with_helper()
+    public function it_can_be_instantiated_with_helper(): void
     {
         $expectations = [
             \Arcanedev\LaravelSettings\Contracts\Manager::class,
@@ -67,13 +71,13 @@ class SettingsManagerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_default_store_name()
+    public function it_can_get_default_store_name(): void
     {
         static::assertSame('json', $this->manager->getDefaultDriver());
     }
 
     /** @test */
-    public function it_can_get_default_store_by_contract()
+    public function it_can_get_default_store_by_contract(): void
     {
         $store = $this->app->make(\Arcanedev\LaravelSettings\Contracts\Store::class);
 
@@ -88,7 +92,7 @@ class SettingsManagerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_store_by_name()
+    public function it_can_get_store_by_name(): void
     {
         $expectations = [
             'array'    => \Arcanedev\LaravelSettings\Stores\ArrayStore::class,
@@ -105,7 +109,7 @@ class SettingsManagerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_store_by_name_via_helper()
+    public function it_can_get_store_by_name_via_helper(): void
     {
         $expectations = [
             'array'    => \Arcanedev\LaravelSettings\Stores\ArrayStore::class,

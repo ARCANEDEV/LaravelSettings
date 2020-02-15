@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Stores;
 
 /**
  * Class     ArrayStore

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Arcanedev\Support\Database\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -32,9 +34,9 @@ class CreateSettingsTable extends Migration
     /**
      * {@inheritdoc}
      */
-    public function up()
+    public function up(): void
     {
-        $this->createSchema(function(Blueprint $table) {
+        $this->createSchema(function(Blueprint $table): void {
             $table->unsignedBigInteger('user_id')->default(0);
             $table->string('key');
             $table->text('value');

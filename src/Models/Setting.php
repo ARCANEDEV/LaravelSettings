@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Models;
 
 use Arcanedev\Support\Database\Model;
 

@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\LaravelSettings\Middleware;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Middleware;
 
 use Arcanedev\LaravelSettings\Contracts\Store;
 use Closure;

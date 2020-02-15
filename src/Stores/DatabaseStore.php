@@ -1,8 +1,13 @@
-<?php namespace Arcanedev\LaravelSettings\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Stores;
 
 use Arcanedev\LaravelSettings\Models\Setting as SettingModel;
 use Arcanedev\LaravelSettings\Utilities\Arr;
 use Closure;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class     DatabaseStore
@@ -83,7 +88,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  string  $name
      *
-     * @return self
+     * @return $this
      */
     public function setConnection($name)
     {
@@ -97,7 +102,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  string  $name
      *
-     * @return self
+     * @return $this
      */
     public function setTable($name)
     {
@@ -111,7 +116,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  string  $name
      *
-     * @return self
+     * @return $this
      */
     public function setKeyColumn($name)
     {
@@ -125,7 +130,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  string  $name
      *
-     * @return self
+     * @return $this
      */
     public function setValueColumn($name)
     {
@@ -139,7 +144,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  \Closure  $callback
      *
-     * @return self
+     * @return $this
      */
     public function setConstraint(Closure $callback)
     {
@@ -155,7 +160,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  array  $columns
      *
-     * @return self
+     * @return $this
      */
     public function setExtraColumns(array $columns)
     {
@@ -176,7 +181,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  string  $key
      *
-     * @return self
+     * @return $this
      */
     public function forget($key)
     {
@@ -206,7 +211,7 @@ class DatabaseStore extends AbstractStore
      *
      * @return array
      */
-    protected function read()
+    protected function read(): array
     {
         return $this->newQuery()
             ->pluck($this->valueColumn, $this->keyColumn)
@@ -218,7 +223,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  array  $data
      */
-    protected function write(array $data)
+    protected function write(array $data): void
     {
         $changes = $this->getChanges($data);
 
@@ -239,15 +244,13 @@ class DatabaseStore extends AbstractStore
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function newQuery($insert = false)
+    protected function newQuery(bool $insert = false): Builder
     {
-        $query = $this->model->newQuery();
-
-        if ( ! $insert) {
-            foreach ($this->extraColumns as $key => $value) {
-                $query->where($key, '=', $value);
-            }
-        }
+        $query = $this->model
+            ->newQuery()
+            ->unless($insert, function (Builder $q): void {
+                $q->where($this->extraColumns);
+            });
 
         if ($this->hasQueryConstraint()) {
             $callback = $this->queryConstraint;
@@ -265,7 +268,7 @@ class DatabaseStore extends AbstractStore
      *
      * @return array
      */
-    protected function prepareInsertData(array $data)
+    protected function prepareInsertData(array $data): array
     {
         $dbData       = [];
         $extraColumns = $this->extraColumns ? $this->extraColumns : [];
@@ -285,7 +288,7 @@ class DatabaseStore extends AbstractStore
      *
      * @return bool
      */
-    protected function hasQueryConstraint()
+    protected function hasQueryConstraint(): bool
     {
         return ! is_null($this->queryConstraint) && is_callable($this->queryConstraint);
     }
@@ -297,7 +300,7 @@ class DatabaseStore extends AbstractStore
      *
      * @return array
      */
-    private function getChanges(array $data)
+    private function getChanges(array $data): array
     {
         $changes = [
             'inserted' => Arr::dot($data),
@@ -322,7 +325,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  array  $updated
      */
-    private function syncUpdated(array $updated)
+    private function syncUpdated(array $updated): void
     {
         foreach ($updated as $key => $value) {
             $this->newQuery()
@@ -336,7 +339,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  array  $inserted
      */
-    private function syncInserted(array $inserted)
+    private function syncInserted(array $inserted): void
     {
         if ( ! empty($inserted)) {
             $this->newQuery(true)->insert(
@@ -350,7 +353,7 @@ class DatabaseStore extends AbstractStore
      *
      * @param  array  $deleted
      */
-    private function syncDeleted(array $deleted)
+    private function syncDeleted(array $deleted): void
     {
         if ( ! empty($deleted)) {
             $this->newQuery()->whereIn($this->keyColumn, $deleted)->delete();

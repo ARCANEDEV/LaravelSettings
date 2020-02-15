@@ -1,6 +1,11 @@
-<?php namespace Arcanedev\LaravelSettings\Utilities;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Utilities;
 
 use Illuminate\Support\Arr as BaseArr;
+use UnexpectedValueException;
 
 /**
  * Class     Arr
@@ -26,7 +31,7 @@ class Arr extends BaseArr
      *
      * @return array
      */
-    public static function set(&$array, $key, $value)
+    public static function set(&$array, $key, $value): array
     {
         $segments = explode('.', $key);
         $key      = array_pop($segments);
@@ -37,7 +42,7 @@ class Arr extends BaseArr
                 $array[$segment] = [];
             }
             elseif ( ! is_array($array[$segment])) {
-                throw new \UnexpectedValueException('Non-array segment encountered');
+                throw new UnexpectedValueException('Non-array segment encountered');
             }
 
             $array =& $array[$segment];

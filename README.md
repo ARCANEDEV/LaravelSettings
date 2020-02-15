@@ -1,6 +1,6 @@
 # LaravelSettings [![Packagist License][badge_license]](LICENSE.md) [![For Laravel][badge_laravel]][link-github-repo]
 
-[![Travis Status][badge_build]][link-travis]
+[![Github Workflow Status][badge_build]][link-github-status]
 [![Coverage Status][badge_coverage]][link-scrutinizer]
 [![Scrutinizer Code Quality][badge_quality]][link-scrutinizer]
 [![SensioLabs Insight][badge_insight]][link-insight]
@@ -46,7 +46,7 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 
 [badge_license]:   https://img.shields.io/packagist/l/arcanedev/laravel-settings.svg?style=flat-square
 [badge_laravel]:   https://img.shields.io/badge/Laravel-5.2%20to%206.x-orange.svg?style=flat-square
-[badge_build]:     https://img.shields.io/travis/ARCANEDEV/LaravelSettings.svg?style=flat-square
+[badge_build]:     https://img.shields.io/github/workflow/status/ARCANEDEV/LaravelSettings/run-tests?style=flat-square
 [badge_coverage]:  https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_quality]:   https://img.shields.io/scrutinizer/g/ARCANEDEV/LaravelSettings.svg?style=flat-square
 [badge_insight]:   https://img.shields.io/sensiolabs/i/1ba3f1b4-4475-4db5-8f99-0af6fb6a80be.svg?style=flat-square
@@ -57,9 +57,9 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 
 [link-author]:        https://github.com/arcanedev-maroc
 [link-github-repo]:   https://github.com/ARCANEDEV/LaravelSettings
+[link-github-status]: https://github.com/ARCANEDEV/LaravelSettings/actions
 [link-github-issues]: https://github.com/ARCANEDEV/LaravelSettings/issues
 [link-contributors]:  https://github.com/ARCANEDEV/LaravelSettings/graphs/contributors
 [link-packagist]:     https://packagist.org/packages/arcanedev/laravel-settings
-[link-travis]:        https://travis-ci.org/ARCANEDEV/LaravelSettings
 [link-scrutinizer]:   https://scrutinizer-ci.com/g/ARCANEDEV/LaravelSettings/?branch=master
 [link-insight]:       https://insight.sensiolabs.com/projects/1ba3f1b4-4475-4db5-8f99-0af6fb6a80be
