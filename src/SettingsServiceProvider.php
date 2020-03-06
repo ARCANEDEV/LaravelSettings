@@ -51,9 +51,13 @@ class SettingsServiceProvider extends PackageServiceProvider implements Deferrab
      */
     public function boot(): void
     {
-        $this->publishConfig();
+        SettingsManager::$runsMigrations
+            ? $this->loadMigrations()
+            : $this->publishMigrations();
 
-        SettingsManager::$runsMigrations ? $this->loadMigrations() : $this->publishMigrations();
+        if ($this->app->runningInConsole()) {
+            $this->publishConfig();
+        }
     }
 
     /**
