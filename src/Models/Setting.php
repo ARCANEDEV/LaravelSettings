@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Arcanedev\LaravelSettings\Models;
 
-use Arcanedev\Support\Database\Model;
+use Arcanedev\Support\Database\PrefixedModel;
 
 /**
  * Class     Setting
@@ -12,7 +12,7 @@ use Arcanedev\Support\Database\Model;
  * @package  Arcanedev\LaravelSettings\Models
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class Setting extends Model
+class Setting extends PrefixedModel
 {
     //
 }

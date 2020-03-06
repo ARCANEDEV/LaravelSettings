@@ -35,7 +35,7 @@ return [
             'options' => [
                 'connection' => null,
                 'table'      => 'settings',
-                'model'      => \Arcanedev\LaravelSettings\Models\Setting::class,
+                'model'      => Arcanedev\LaravelSettings\Models\Setting::class,
             ],
         ],
 
