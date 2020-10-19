@@ -10,7 +10,6 @@ use Illuminate\Support\Arr;
 /**
  * Class     RedisStore
  *
- * @package  Arcanedev\LaravelSettings\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class RedisStore extends AbstractStore

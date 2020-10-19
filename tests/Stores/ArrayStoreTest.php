@@ -1,11 +1,14 @@
-<?php namespace Arcanedev\LaravelSettings\Tests\Stores;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\LaravelSettings\Tests\Stores;
 
 use Arcanedev\LaravelSettings\Contracts\Store;
 
 /**
  * Class     ArrayStoreTest
  *
- * @package  Arcanedev\LaravelSettings\Tests\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class ArrayStoreTest extends AbstractStoreTest

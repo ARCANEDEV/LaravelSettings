@@ -7,7 +7,6 @@ namespace Arcanedev\LaravelSettings\Tests;
 /**
  * Class     SettingsManagerTest
  *
- * @package  Arcanedev\LaravelSettings\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class SettingsManagerTest extends TestCase

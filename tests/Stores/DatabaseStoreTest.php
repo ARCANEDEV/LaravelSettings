@@ -10,7 +10,6 @@ use Arcanedev\LaravelSettings\Stores\DatabaseStore;
 /**
  * Class     DatabaseStoreTest
  *
- * @package  Arcanedev\LaravelSettings\Tests\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class DatabaseStoreTest extends AbstractStoreTest
@@ -25,7 +24,7 @@ class DatabaseStoreTest extends AbstractStoreTest
      *
      * @param  array $data
      *
-     * @return \Arcanedev\LaravelSettings\Contracts\Store
+     * @return \Arcanedev\LaravelSettings\Contracts\Store|\Arcanedev\LaravelSettings\Stores\DatabaseStore
      */
     protected function createStore(array $data = [])
     {
@@ -40,7 +39,6 @@ class DatabaseStoreTest extends AbstractStoreTest
     /** @test */
     public function it_can_set_extra_columns(): void
     {
-        /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
         $store = $this->createStore();
 
         static::assertSame([], $store->all());
@@ -82,7 +80,6 @@ class DatabaseStoreTest extends AbstractStoreTest
     {
         // TODO: Apply this to all the stores ?? This issue is masked by the container = The stores are resolved with singleton pattern
 
-        /** @var  \Arcanedev\LaravelSettings\Stores\DatabaseStore  $store */
         $store = new DatabaseStore($this->app, $options = [
             'connection' => null,
             'table'      => 'settings',

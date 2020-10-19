@@ -7,7 +7,6 @@ namespace Arcanedev\LaravelSettings\Stores;
 /**
  * Class     ArrayStore
  *
- * @package  Arcanedev\LaravelSettings\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class ArrayStore extends AbstractStore

@@ -9,7 +9,6 @@ use Arcanedev\Support\Database\PrefixedModel;
 /**
  * Class     Setting
  *
- * @package  Arcanedev\LaravelSettings\Models
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Setting extends PrefixedModel

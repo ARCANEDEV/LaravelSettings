@@ -11,7 +11,6 @@ use Illuminate\Support\{Arr, Manager};
 /**
  * Class     SettingsManager
  *
- * @package  Arcanedev\LaravelSettings
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class SettingsManager extends Manager implements SettingsManagerContract

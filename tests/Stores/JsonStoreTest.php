@@ -7,7 +7,6 @@ namespace Arcanedev\LaravelSettings\Tests\Stores;
 /**
  * Class     JsonStoreTest
  *
- * @package  Arcanedev\LaravelSettings\Tests\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class JsonStoreTest extends AbstractStoreTest
@@ -22,7 +21,7 @@ class JsonStoreTest extends AbstractStoreTest
      *
      * @param  array  $data
      *
-     * @return \Arcanedev\LaravelSettings\Contracts\Store
+     * @return \Arcanedev\LaravelSettings\Contracts\Store|\Arcanedev\LaravelSettings\Stores\JsonStore
      */
     protected function createStore(array $data = [])
     {
@@ -31,6 +30,9 @@ class JsonStoreTest extends AbstractStoreTest
         return $this->getStore('json')->setPath($path);
     }
 
+    /**
+     * Clean up the testing environment before the next test.
+     */
     protected function tearDown(): void
     {
         unlink($this->getFixtureFilePath());
@@ -48,10 +50,9 @@ class JsonStoreTest extends AbstractStoreTest
     {
         $this->expectException(\RuntimeException::class);
 
-        /** @var  \Arcanedev\LaravelSettings\Stores\JsonStore  $store */
-        $store = $this->createStore();
-
-        $store->setPath(__DIR__.'/../fixtures/database/invalid-settings.json')->all();
+        $this->createStore()
+             ->setPath(__DIR__.'/../fixtures/database/invalid-settings.json')
+             ->all();
     }
 
     /* -----------------------------------------------------------------
@@ -59,10 +60,7 @@ class JsonStoreTest extends AbstractStoreTest
      | -----------------------------------------------------------------
      */
 
-    /**
-     * @return string
-     */
-    private function getFixtureFilePath()
+    private function getFixtureFilePath(): string
     {
         return __DIR__.'/../fixtures/database/json-settings.json';
     }
