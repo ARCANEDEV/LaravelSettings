@@ -11,7 +11,6 @@ use Illuminate\Contracts\Foundation\Application;
 /**
  * Class     AbstractStore
  *
- * @package  Arcanedev\LaravelSettings\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class AbstractStore implements Store

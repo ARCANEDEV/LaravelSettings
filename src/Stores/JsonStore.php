@@ -10,7 +10,6 @@ use RuntimeException;
 /**
  * Class     JsonStore
  *
- * @package  Arcanedev\LaravelSettings\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class JsonStore extends AbstractStore

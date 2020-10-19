@@ -10,7 +10,6 @@ use UnexpectedValueException;
 /**
  * Class     Arr
  *
- * @package  Arcanedev\LaravelSettings\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Arr extends BaseArr

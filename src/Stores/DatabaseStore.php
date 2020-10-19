@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Class     DatabaseStore
  *
- * @package  Arcanedev\LaravelSettings\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class DatabaseStore extends AbstractStore

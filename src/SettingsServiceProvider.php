@@ -12,7 +12,6 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 /**
  * Class     SettingsServiceProvider
  *
- * @package  Arcanedev\LaravelSettings
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class SettingsServiceProvider extends PackageServiceProvider implements DeferrableProvider
@@ -85,16 +84,16 @@ class SettingsServiceProvider extends PackageServiceProvider implements Deferrab
     {
         $this->singleton(ManagerContract::class, SettingsManager::class);
 
-        $this->singleton(StoreContract::class, function ($app): StoreContract {
-            return $app[ManagerContract::class]->driver();
-        });
-
         $this->app->extend(ManagerContract::class, function (ManagerContract $manager, $app) {
             foreach ($app['config']->get('settings.drivers', []) as $driver => $params) {
                 $manager->registerStore($driver, $params);
             }
 
             return $manager;
+        });
+
+        $this->singleton(StoreContract::class, function ($app): StoreContract {
+            return $app[ManagerContract::class]->driver();
         });
     }
 }

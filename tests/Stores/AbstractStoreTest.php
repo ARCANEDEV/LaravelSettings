@@ -13,7 +13,6 @@ use UnexpectedValueException;
 /**
  * Class     AbstractStoreTest
  *
- * @package  Arcanedev\LaravelSettings\Tests\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class AbstractStoreTest extends TestCase
@@ -28,7 +27,7 @@ abstract class AbstractStoreTest extends TestCase
      *
      * @param  array  $data
      *
-     * @return \Arcanedev\LaravelSettings\Contracts\Store
+     * @return \Arcanedev\LaravelSettings\Contracts\Store|mixed
      */
     protected abstract function createStore(array $data = []);
 
@@ -39,7 +38,7 @@ abstract class AbstractStoreTest extends TestCase
      *
      * @return \Arcanedev\LaravelSettings\Contracts\Store
      */
-    protected function getStore($driver)
+    protected function getStore(string $driver)
     {
         return $this->getSettingsManager()->driver($driver);
     }

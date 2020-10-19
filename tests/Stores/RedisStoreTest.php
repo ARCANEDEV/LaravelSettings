@@ -7,7 +7,6 @@ namespace Arcanedev\LaravelSettings\Tests\Stores;
 /**
  * Class     RedisStoreTest
  *
- * @package  Arcanedev\LaravelSettings\Tests\Stores
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class RedisStoreTest extends AbstractStoreTest
@@ -29,6 +28,9 @@ class RedisStoreTest extends AbstractStoreTest
         return $this->getStore('redis');
     }
 
+    /**
+     * Clean up the testing environment before the next test.
+     */
     protected function tearDown(): void
     {
         $this->createStore()->flush()->save();

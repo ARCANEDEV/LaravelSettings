@@ -7,7 +7,6 @@ namespace Arcanedev\LaravelSettings\Tests;
 /**
  * Class     SettingsServiceProviderTest
  *
- * @package  Arcanedev\LaravelSettings\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class SettingsServiceProviderTest extends TestCase
@@ -38,6 +37,11 @@ class SettingsServiceProviderTest extends TestCase
 
         parent::tearDown();
     }
+
+    /* -----------------------------------------------------------------
+     |  Tests
+     | -----------------------------------------------------------------
+     */
 
     /** @test */
     public function it_can_be_instantiated(): void

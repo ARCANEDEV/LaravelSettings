@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Arcanedev\LaravelSettings\Contracts;
 
 /**
- * Interface     Store
+ * Interface  Store
  *
- * @package  Arcanedev\LaravelSettings\Contracts
- * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface Store
 {

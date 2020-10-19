@@ -7,10 +7,9 @@ namespace Arcanedev\LaravelSettings\Contracts;
 use Closure;
 
 /**
- * Interface     SettingsManager
+ * Interface  Manager
  *
- * @package  Arcanedev\LaravelSettings\Contracts
- * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface Manager
 {

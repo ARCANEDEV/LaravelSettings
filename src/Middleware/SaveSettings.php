@@ -10,7 +10,6 @@ use Closure;
 /**
  * Class     SaveSettings
  *
- * @package  Arcanedev\LaravelSettings\Middleware
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class SaveSettings
