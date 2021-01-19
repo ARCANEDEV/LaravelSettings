@@ -346,7 +346,7 @@ class DatabaseStore extends AbstractStore
                 return array_merge(['created_at' => now(), 'updated_at' => now()], $insert);
             }, $preparedInsertData);
 
-            $this->newQuery(true)->insert($preparedInsertData);
+            $this->newQuery(true)->insert($preparedInsertDataWithTimestamps);
         }
     }
 
