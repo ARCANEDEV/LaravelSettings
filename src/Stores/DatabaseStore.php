@@ -341,9 +341,12 @@ class DatabaseStore extends AbstractStore
     private function syncInserted(array $inserted): void
     {
         if ( ! empty($inserted)) {
-            $this->newQuery(true)->insert(
-                $this->prepareInsertData($inserted)
-            );
+            $preparedInsertData = $this->prepareInsertData($inserted);
+            $preparedInsertDataWithTimestamps = array_map(function ($insert) {
+                return array_merge(['created_at' => now(), 'updated_at' => now()], $insert);
+            }, $preparedInsertData);
+
+            $this->newQuery(true)->insert($preparedInsertData);
         }
     }
 
