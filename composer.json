@@ -16,14 +16,15 @@
     "type":    "library",
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "ext-json": "*",
         "arcanedev/support": "^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "mockery/mockery": "^1.3.1",
-        "phpunit/phpunit": "^9.3",
+        "laravel/framework": "^8.19",
+        "mockery/mockery": "^1.4.2",
+        "orchestra/testbench-core": "^6.4",
+        "phpunit/phpunit": "^9.3.3",
         "predis/predis": "^1.1.1"
     },
     "autoload": {
@@ -48,8 +49,9 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "test:dox": "phpunit --testdox"
+        "test": "phpunit --colors=always",
+        "test:dox": "phpunit --testdox --colors=always",
+        "test:cov": "phpunit --coverage-html coverage"
     },
     "suggest": {
         "illuminate/redis": "This package allows you to persist the settings into a redis server."
