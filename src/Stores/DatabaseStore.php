@@ -8,6 +8,7 @@ use Arcanedev\LaravelSettings\Models\Setting as SettingModel;
 use Arcanedev\LaravelSettings\Utilities\Arr;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
  * Class     DatabaseStore
@@ -269,13 +270,16 @@ class DatabaseStore extends AbstractStore
      */
     protected function prepareInsertData(array $data): array
     {
+        $now          = Carbon::now();
         $dbData       = [];
         $extraColumns = $this->extraColumns ? $this->extraColumns : [];
 
         foreach ($data as $key => $value) {
             $dbData[] = array_merge($extraColumns, [
-                $this->keyColumn   => $key,
-                $this->valueColumn => $value,
+                $this->keyColumn                   => $key,
+                $this->valueColumn                 => $value,
+                $this->model->getCreatedAtColumn() => $now,
+                $this->model->getUpdatedAtColumn() => $now,
             ]);
         }
 
