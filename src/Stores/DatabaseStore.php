@@ -8,6 +8,7 @@ use Arcanedev\LaravelSettings\Models\Setting as SettingModel;
 use Arcanedev\LaravelSettings\Utilities\Arr;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
  * Class     DatabaseStore
@@ -269,13 +270,16 @@ class DatabaseStore extends AbstractStore
      */
     protected function prepareInsertData(array $data): array
     {
+        $now          = Carbon::now();
         $dbData       = [];
         $extraColumns = $this->extraColumns ? $this->extraColumns : [];
 
         foreach ($data as $key => $value) {
             $dbData[] = array_merge($extraColumns, [
-                $this->keyColumn   => $key,
-                $this->valueColumn => $value,
+                $this->keyColumn                   => $key,
+                $this->valueColumn                 => $value,
+                $this->model->getCreatedAtColumn() => $now,
+                $this->model->getUpdatedAtColumn() => $now,
             ]);
         }
 
@@ -341,12 +345,9 @@ class DatabaseStore extends AbstractStore
     private function syncInserted(array $inserted): void
     {
         if ( ! empty($inserted)) {
-            $preparedInsertData = $this->prepareInsertData($inserted);
-            $preparedInsertDataWithTimestamps = array_map(function ($insert) {
-                return array_merge(['created_at' => now(), 'updated_at' => now()], $insert);
-            }, $preparedInsertData);
-
-            $this->newQuery(true)->insert($preparedInsertDataWithTimestamps);
+            $this->newQuery(true)->insert(
+                $this->prepareInsertData($inserted)
+            );
         }
     }
 
