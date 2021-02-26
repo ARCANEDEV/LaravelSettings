@@ -24,12 +24,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
 
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/.composer/cache/files
-          key: dependencies-laravel-8.x-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+          key: dependencies-laravel-8-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -37,6 +39,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: curl, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, iconv
           coverage: xdebug
+          tools: composer:v2
 
       - name: Install dependencies
         run: composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
