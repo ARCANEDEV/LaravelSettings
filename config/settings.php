@@ -54,5 +54,20 @@ return [
         ],
 
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | Cache
+    |--------------------------------------------------------------------------
+    |
+    | Options for caching. Set whether to enable cache, its key, time to live
+    | in seconds and whether to auto clear after save.
+    |
+    */
+    'cache' => [
+        'enabled'       => false,
+        'key'           => 'settings',
+        'ttl'           => 3600,
+        'auto_clear'    => true,
+    ],
 
 ];

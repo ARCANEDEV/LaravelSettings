@@ -9,6 +9,7 @@ use Arcanedev\LaravelSettings\Utilities\Arr;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class     DatabaseStore
@@ -213,6 +214,14 @@ class DatabaseStore extends AbstractStore
      */
     protected function read(): array
     {
+        if(config('settings.cache.enabled')){
+            return Cache::remember(config('settings.cache.key'), config('settings.cache.ttl'), function(){
+                return $this->newQuery()
+                    ->pluck($this->valueColumn, $this->keyColumn)
+                    ->toArray();
+            });
+        }
+
         return $this->newQuery()
             ->pluck($this->valueColumn, $this->keyColumn)
             ->toArray();
@@ -226,6 +235,10 @@ class DatabaseStore extends AbstractStore
     protected function write(array $data): void
     {
         $changes = $this->getChanges($data);
+
+        if(config('settings.cache.enabled')){
+            Cache::forget(config('settings.cache.key'));
+        }
 
         $this->syncUpdated($changes['updated']);
         $this->syncInserted($changes['inserted']);
