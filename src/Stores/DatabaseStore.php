@@ -215,7 +215,7 @@ class DatabaseStore extends AbstractStore
     protected function read(): array
     {
         if(config('settings.cache.enabled')){
-            return Cache::remember(config('settings.cache.key'), config('settings.cache.ttl'), function(){
+            return Cache::remember($this->getCacheKey(), config('settings.cache.ttl'), function(){
                 return $this->newQuery()
                     ->pluck($this->valueColumn, $this->keyColumn)
                     ->toArray();
@@ -237,12 +237,28 @@ class DatabaseStore extends AbstractStore
         $changes = $this->getChanges($data);
 
         if(config('settings.cache.enabled')){
-            Cache::forget(config('settings.cache.key'));
+            Cache::forget($this->getCacheKey());
         }
 
         $this->syncUpdated($changes['updated']);
         $this->syncInserted($changes['inserted']);
         $this->syncDeleted($changes['deleted']);
+    }
+
+    /**
+     * Get cache key based on extra columns.
+     *
+     * @return string
+     */
+    public function getCacheKey()
+    {
+        $key = config('settings.cache.key');
+
+        foreach ($this->extraColumns as $name => $value) {
+            $key .= '_' . $name . '_' . $value;
+        }
+
+        return $key;
     }
 
     /* -----------------------------------------------------------------
