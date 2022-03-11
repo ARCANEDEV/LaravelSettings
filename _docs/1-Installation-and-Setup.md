@@ -10,6 +10,7 @@
 
 | Laravel                      | LaravelSettings                               |
 |:-----------------------------|:----------------------------------------------|
+| ![Laravel v9.x][laravel_9_x] | ![LaravelSettings v9.x][laravel_settings_9_x] |
 | ![Laravel v8.x][laravel_8_x] | ![LaravelSettings v8.x][laravel_settings_8_x] |
 | ![Laravel v7.x][laravel_7_x] | ![LaravelSettings v7.x][laravel_settings_7_x] |
 | ![Laravel v6.x][laravel_6_x] | ![LaravelSettings v6.x][laravel_settings_6_x] |
@@ -21,6 +22,7 @@
 | ![Laravel v5.3][laravel_5_3] | ![LaravelSettings v0.x][laravel_settings_0_x] |
 | ![Laravel v5.2][laravel_5_2] | ![LaravelSettings v0.x][laravel_settings_0_x] |
 
+[laravel_9_x]:  https://img.shields.io/badge/version-9.x-blue.svg?style=flat-square "Laravel v9.x"
 [laravel_8_x]:  https://img.shields.io/badge/version-8.x-blue.svg?style=flat-square "Laravel v8.x"
 [laravel_7_x]:  https://img.shields.io/badge/version-7.x-blue.svg?style=flat-square "Laravel v7.x"
 [laravel_6_x]:  https://img.shields.io/badge/version-6.x-blue.svg?style=flat-square "Laravel v6.x"
@@ -32,6 +34,7 @@
 [laravel_5_3]:  https://img.shields.io/badge/version-5.3-blue.svg?style=flat-square "Laravel v5.3"
 [laravel_5_2]:  https://img.shields.io/badge/version-5.2-blue.svg?style=flat-square "Laravel v5.2"
 
+[laravel_settings_9_x]: https://img.shields.io/badge/version-9.x-blue.svg?style=flat-square "LaravelSettings v9.x"
 [laravel_settings_8_x]: https://img.shields.io/badge/version-8.x-blue.svg?style=flat-square "LaravelSettings v8.x"
 [laravel_settings_7_x]: https://img.shields.io/badge/version-7.x-blue.svg?style=flat-square "LaravelSettings v7.x"
 [laravel_settings_6_x]: https://img.shields.io/badge/version-6.x-blue.svg?style=flat-square "LaravelSettings v6.x"

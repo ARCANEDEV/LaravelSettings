@@ -5,12 +5,7 @@ declare(strict_types=1);
 use Arcanedev\Support\Database\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-/**
- * Class     CreateSettingsTable
- *
- * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
- */
-class CreateSettingsTable extends Migration
+return new class extends Migration
 {
     /* -----------------------------------------------------------------
      |  Constructor
@@ -45,4 +40,4 @@ class CreateSettingsTable extends Migration
             $table->unique(['user_id', 'key']);
         });
     }
-}
+};
