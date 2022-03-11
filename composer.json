@@ -16,7 +16,7 @@
     "type":    "library",
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "arcanedev/support": "^9.0"
     },
@@ -24,8 +24,8 @@
         "laravel/framework": "^9.0",
         "mockery/mockery": "^1.4.2",
         "orchestra/testbench-core": "^7.0",
-        "phpunit/phpunit": "^9.3",
-        "predis/predis": "^1.1.1"
+        "phpunit/phpunit": "^9.5.10",
+        "predis/predis": "^1.1.9"
     },
     "autoload": {
         "psr-4": {
