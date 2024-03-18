@@ -11,7 +11,7 @@ use Arcanedev\LaravelSettings\Contracts\Store;
  *
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class ArrayStoreTest extends AbstractStoreTest
+class ArrayStoreTest extends AbstractStoreTestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods

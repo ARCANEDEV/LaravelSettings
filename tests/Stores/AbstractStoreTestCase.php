@@ -15,7 +15,7 @@ use UnexpectedValueException;
  *
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-abstract class AbstractStoreTest extends TestCase
+abstract class AbstractStoreTestCase extends TestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods

@@ -9,7 +9,7 @@ namespace Arcanedev\LaravelSettings\Tests\Stores;
  *
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class RedisStoreTest extends AbstractStoreTest
+class RedisStoreTest extends AbstractStoreTestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods
