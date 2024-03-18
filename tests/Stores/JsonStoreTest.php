@@ -9,7 +9,7 @@ namespace Arcanedev\LaravelSettings\Tests\Stores;
  *
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class JsonStoreTest extends AbstractStoreTest
+class JsonStoreTest extends AbstractStoreTestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods

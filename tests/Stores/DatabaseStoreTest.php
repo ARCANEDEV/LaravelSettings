@@ -12,7 +12,7 @@ use Arcanedev\LaravelSettings\Stores\DatabaseStore;
  *
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class DatabaseStoreTest extends AbstractStoreTest
+class DatabaseStoreTest extends AbstractStoreTestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods
