@@ -50,7 +50,7 @@ jobs:
         env:
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
-      - name: Scrutinizer CI
-        run: |
-          composer require scrutinizer/ocular --dev
-          vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+#      - name: Scrutinizer CI
+#        run: |
+#          composer require scrutinizer/ocular --dev
+#          vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
