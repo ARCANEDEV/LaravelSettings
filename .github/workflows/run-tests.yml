@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0, 8.1]
+        php: [8.0, 8.1, 8.2, 8.3]
         dependency-version: [prefer-lowest, prefer-stable]
 
     name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }}
@@ -51,7 +51,7 @@ jobs:
         env:
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
-      - name: Scrutinizer CI
-        run: |
-          composer require scrutinizer/ocular --dev
-          vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+#      - name: Scrutinizer CI
+#        run: |
+#          composer require scrutinizer/ocular --dev
+#          vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover

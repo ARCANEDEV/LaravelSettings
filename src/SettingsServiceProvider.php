@@ -80,7 +80,7 @@ class SettingsServiceProvider extends PackageServiceProvider implements Deferrab
      */
     private function registerSettingsManager(): void
     {
-        $this->singleton(ManagerContract::class, SettingsManager::class);
+        $this->bind(ManagerContract::class, SettingsManager::class);
 
         $this->app->extend(ManagerContract::class, function (ManagerContract $manager, $app) {
             foreach ($app['config']->get('settings.drivers', []) as $driver => $params) {
