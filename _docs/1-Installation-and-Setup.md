@@ -10,6 +10,7 @@
 
 | Laravel                        | LaravelSettings                                 |
 |:-------------------------------|:------------------------------------------------|
+| ![Laravel v11.x][laravel_11_x] | ![LaravelSettings v11.x][laravel_settings_11_x] |
 | ![Laravel v10.x][laravel_10_x] | ![LaravelSettings v10.x][laravel_settings_10_x] |
 | ![Laravel v9.x][laravel_9_x]   | ![LaravelSettings v9.x][laravel_settings_9_x]   |
 | ![Laravel v8.x][laravel_8_x]   | ![LaravelSettings v8.x][laravel_settings_8_x]   |
@@ -23,6 +24,7 @@
 | ![Laravel v5.3][laravel_5_3]   | ![LaravelSettings v0.x][laravel_settings_0_x]   |
 | ![Laravel v5.2][laravel_5_2]   | ![LaravelSettings v0.x][laravel_settings_0_x]   |
 
+[laravel_11_x]:  https://img.shields.io/badge/version-11.x-blue.svg?style=flat-square "Laravel v11.x"
 [laravel_10_x]:  https://img.shields.io/badge/version-10.x-blue.svg?style=flat-square "Laravel v10.x"
 [laravel_9_x]:  https://img.shields.io/badge/version-9.x-blue.svg?style=flat-square "Laravel v9.x"
 [laravel_8_x]:  https://img.shields.io/badge/version-8.x-blue.svg?style=flat-square "Laravel v8.x"

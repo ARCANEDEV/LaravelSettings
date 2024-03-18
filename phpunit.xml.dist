@@ -5,15 +5,17 @@
          colors="true"
          cacheDirectory=".phpunit.cache"
 >
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
     <testsuites>
         <testsuite name="Package Test Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <coverage>
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
         <report>
             <clover outputFile="build/coverage/clover.xml"/>
             <html outputDirectory="build/coverage/html"/>
